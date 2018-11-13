@@ -183,9 +183,9 @@ image::images/docker-switch-to-linux.png[]
 
 [source,sh]
 ----
-git clone https://github.com/riboseinc/unece-cefact-recommendation-42
-cd unece-cefact-recommendation-42
-docker run -v ${pwd}:/metanorma/ ribose/metanorma metanorma -t unece -x html,xml,doc unece-cefact-recommendation-42.adoc
+git clone https://github.com/riboseinc/isodoc-rice
+cd isodoc-rice
+docker run -v ${pwd}:/metanorma/ ribose/metanorma "metanorma -t iso -x html,xml,doc iso-rice-en.adoc"
 ----
 
 
