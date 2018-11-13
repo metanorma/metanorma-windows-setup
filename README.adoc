@@ -112,7 +112,6 @@ choco install docker-for-windows -y
 
 
 
-
 ==== Install Docker for Windows manually
 
 . Go to the https://store.docker.com/editions/community/docker-ce-desktop-windows[Docker Store] to download "`Docker for Windows`"
@@ -143,16 +142,23 @@ image::images/docker-manual-install-config.png[]
 +
 image::images/docker-manual-install-finished.png[]
 
-. After the restart you will see Docker being up!
-+
-image::images/docker-up.png[]
 
+==== Post-install
 
-NOTE: You may be asked by Docker to enable Hyper-V and the Containers service as shown below.
-It is fine to enable them (and the subsequent restart) but remember to switch back
+This section is relevant regardless of which method you used to install
+Docker for Windows.
+
+On the first restart, you will asked by Docker to enable Hyper-V and
+the Containers service as shown below. This is mandatory for running Docker on Windows.
+Click "`OK`" to accept the install and restart, but remember to switch back
 to using "`Linux containers`" prior to running Metanorma.
-+
+
 image::images/docker-enable-containers.png[]
+
+
+After the restart you will see Docker being up as shown below!
+
+image::images/docker-up.png[]
 
 
 
