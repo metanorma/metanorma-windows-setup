@@ -185,8 +185,23 @@ image::images/docker-switch-to-linux.png[]
 ----
 git clone https://github.com/riboseinc/unece-cefact-recommendation-42
 cd unece-cefact-recommendation-42
-docker run -v "./:/metanorma/" ribose/metanorma "metanorma -t unece -x html,xml,doc unece-cefact-recommendation-42.adoc
+docker run -v ${pwd}:/metanorma/ ribose/metanorma metanorma -t unece -x html,xml,doc unece-cefact-recommendation-42.adoc
 ----
+
+
+You may be prompted to share your current drive, such as "`C:\`", as shown below.
+Click "`Share It`" to share the drive with the Metanorma Docker container.
+
+image::images/docker-share-drive.png[]
+
+
+Then you can open the generated HTML file in PowerShell using Internet Explorer Edge:
+
+[source,sh]
+----
+Invoke-Item unece-cefact-recommendation-42.html
+----
+
 
 
 == Notes for running Windows in a VM (and Docker on it!)
