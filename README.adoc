@@ -50,11 +50,11 @@ NOTE: Refer to detailed steps here: https://chocolatey.org/install
 
 Right-click on the "`Start`" menu, and click on "`Windows PowerShell (Admin)`".
 
-image::windows-powershell-start.png[]
+image::images/windows-powershell-start.png[]
 
 You will be presented with the following alert, click "`Yes`" to start the shell.
 
-image::windows-powershell-enable.png[]
+image::images/windows-powershell-enable.png[]
 
 
 
@@ -119,40 +119,40 @@ choco install docker-for-windows -y
 
 .. While the Docker Store asks you to login before downloading, the link is actually available without needing to authenticate (https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe[download link])
 +
-image::docker-manual-download.png[]
+image::images/docker-manual-download.png[]
 
 .. Open the downloaded file.
 +
-image::docker-manual-install.png[]
+image::images/docker-manual-install.png[]
 
 . Allow the install to execute with administrative access
 +
-image::docker-manual-install-allow.png[]
+image::images/docker-manual-install-allow.png[]
 
 . See the installation progress.
 +
-image::docker-manual-install-process.png[]
+image::images/docker-manual-install-process.png[]
 
 . Continue with the default configuration. *DO NOT* select "`Use Windows containers instead of Linux containers`" otherwise the Metanorma container cannot run. It must be run with "`Linux containers`".
 +
-image::docker-manual-install-config.png[]
+image::images/docker-manual-install-config.png[]
 
 .. (Luckily, if you have selected this, it is switchable afterwards)
 
 . Installation is completed and a restart is required.
 +
-image::docker-manual-install-finished.png[]
+image::images/docker-manual-install-finished.png[]
 
 . After the restart you will see Docker being up!
 +
-image::docker-up.png[]
+image::images/docker-up.png[]
 
 
 NOTE: You may be asked by Docker to enable Hyper-V and the Containers service as shown below.
 It is fine to enable them (and the subsequent restart) but remember to switch back
 to using "`Linux containers`" prior to running Metanorma.
 +
-image::docker-enable-containers.png[]
+image::images/docker-enable-containers.png[]
 
 
 
@@ -167,7 +167,7 @@ Otherwise you will be given the dreaded
 . Right click on the docker taskbar icon, and click "`Switch to Linux containers`"
 
 . See the following prompt, click "`Switch`" +
-image::docker-switch-to-linux.png[]
+image::images/docker-switch-to-linux.png[]
 
 . Wait until the docker taskbar icon indicates that docker is up again.
 
@@ -191,7 +191,7 @@ to enable hardware virtualization for the Windows VM.
 For example, this screenshot shows you how to enable VT-x in a VM
 on VMWare Fusion:
 
-image::vmware-enable-vtx.png[]
+image::images/vmware-enable-vtx.png[]
 
 
 
