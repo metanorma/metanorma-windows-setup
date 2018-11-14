@@ -181,6 +181,20 @@ image::images/docker-switch-to-linux.png[]
 
 == Verify everything works
 
+=== General
+
+When running the following commands, you may be prompted to share
+your current drive, such as "`C:\`", as shown below. This is necessary
+to allow the Metanorma Docker container to read the files in the cloned
+directory.
+
+Click "`Share It`" to share the drive with the Metanorma Docker container.
+
+image::images/docker-share-drive.png[]
+
+
+=== Example: ISO Rice document
+
 [source,sh]
 ----
 git clone https://github.com/riboseinc/isodoc-rice
@@ -188,12 +202,22 @@ cd isodoc-rice
 docker run -v ${pwd}:/metanorma/ ribose/metanorma "metanorma -t iso -x html,xml,doc iso-rice-en.adoc"
 ----
 
+Then you can open the generated HTML file in PowerShell using Internet Explorer Edge:
 
-You may be prompted to share your current drive, such as "`C:\`", as shown below.
-Click "`Share It`" to share the drive with the Metanorma Docker container.
+[source,sh]
+----
+Invoke-Item iso-rice-en.html
+----
 
-image::images/docker-share-drive.png[]
 
+=== Example: UNECE Recommendation 42
+
+[source,sh]
+----
+git clone https://github.com/riboseinc/unece-cefact-recommendation-42
+cd unece-cefact-recommendation-42
+docker run -v ${pwd}:/metanorma/ ribose/metanorma "metanorma -t cefact -x html,xml,doc unece-cefact-recommendation-42.adoc"
+----
 
 Then you can open the generated HTML file in PowerShell using Internet Explorer Edge:
 
