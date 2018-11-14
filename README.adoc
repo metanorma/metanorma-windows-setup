@@ -172,7 +172,8 @@ Otherwise you will be given the dreaded
 
 . Right click on the docker taskbar icon, and click "`Switch to Linux containers`"
 
-. See the following prompt, click "`Switch`" +
+. See the following prompt, click "`Switch`"
++
 image::images/docker-switch-to-linux.png[]
 
 . Wait until the docker taskbar icon indicates that docker is up again.
