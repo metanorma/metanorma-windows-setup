@@ -18,8 +18,18 @@ on Windows.
 
 Older versions may work but are not tested.
 
+== Install
 
-== Installing prerequisites
+Run this command in your `cmd.exe` or `PowerShell`:
+
+[source,sh]
+----
+bitsadmin /transfer get https://raw.githubusercontent.com/CAMOBAP795/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
+----
+
+== Manual Installation prerequisites
+
+If automatic installation doesn't work for you for some reasons follow steps bellow
 
 === General
 

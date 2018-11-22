@@ -1,0 +1,14 @@
+version: '{build}'
+
+# https://help.appveyor.com/discussions/questions/1929-create-a-docker-machine-in-appveyor-build-nested-hypervisor-needed
+image: Visual Studio 2017
+
+build: off
+
+test_script:
+  - appveyor AddMessage -Category Information "Test install script"
+  - set install_cmd=bitsadmin /transfer get https://raw.githubusercontent.com/CAMOBAP795/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
+  - cmd /c "%install_cmd%" & set "test_ret=%ERRORLEVEL%"
+  - echo "Install script returned %test_ret%"
+  - exit /B %ERRORLEVEL%
+  - echo "Test DONE"
