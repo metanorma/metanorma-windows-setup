@@ -7,8 +7,12 @@ build: off
 
 test_script:
   - appveyor AddMessage -Category Information "Test install script"
-  - set install_cmd=bitsadmin /transfer get https://raw.githubusercontent.com/CAMOBAP795/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
-  - cmd /c "%install_cmd%" & set "test_ret=%ERRORLEVEL%"
-  - echo "Install script returned %test_ret%"
-  - exit /B %ERRORLEVEL%
+  - bitsadmin /transfer get https://raw.githubusercontent.com/CAMOBAP795/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
+  - set exit_code=%ERRORLEVEL%
+  - echo "Install script returned %exit_code%"
+  - exit /B %exit_code%
   - echo "Test DONE"
+
+artifacts:
+  - path: metanorma_install.log
+    name: install.log
