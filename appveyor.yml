@@ -8,11 +8,20 @@ build: off
 test_script:
   - appveyor AddMessage -Category Information "Test install script"
   - bitsadmin /transfer get https://raw.githubusercontent.com/CAMOBAP795/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
-  - set exit_code=%ERRORLEVEL%
-  - echo "Install script returned %exit_code%"
-  - exit /B %exit_code%
-  - echo "Test DONE"
+  - echo Install script returned %ERRORLEVEL%
+  - refreshenv
+  - git clone https://github.com/CAMOBAP795/unece-cefact-recommendation-42.git & cd unece-cefact-recommendation-42
+  - make -f Makefile.win clean all
+  - echo Generation script script returned %ERRORLEVEL%
+  - echo Test DONE
+
+after_test:
+  - 7z a %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42.zip %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42\unece-cefact-recommendation-42.*
+  - 7z a %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42.zip %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42\images
+  - 7z a %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42.zip %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42\reference-docs
 
 artifacts:
   - path: metanorma_install.log
     name: install.log
+  - path: unece-cefact-recommendation-42.zip
+    name: result.zip
