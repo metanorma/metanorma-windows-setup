@@ -21,7 +21,7 @@ cinst packages.config -y >> %INSTALL_LOG_FILE% 2>&1
 CALL refreshenv >> %INSTALL_LOG_FILE% 2>&1
 
 ECHO Installing puppeteer...
-CALL npm i puppeteer >> %INSTALL_LOG_FILE% 2>&1
+CALL npm i -g puppeteer >> %INSTALL_LOG_FILE% 2>&1
 
 WHERE java >> %INSTALL_LOG_FILE% 2>&1
 IF %ERRORLEVEL% NEQ 0 (
