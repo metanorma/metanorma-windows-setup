@@ -5,7 +5,7 @@ SET INSTALL_LOG_FILE=metanorma_install.log
 ECHO Installation start %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
 
 bitsadmin /transfer get ^
-	https://raw.githubusercontent.com/CAMOBAP795/metanorma-windows-setup/master/packages.config ^
+	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/packages.config ^
 	%CD%\packages.config >> %INSTALL_LOG_FILE% 2>&1
 
 WHERE choco >> %INSTALL_LOG_FILE% 2>&1
