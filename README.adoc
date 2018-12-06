@@ -18,29 +18,66 @@ There are two types of installation:
 
 == Requirements
 
-* https://www.microsoft.com[Windows 10]
+* https://www.microsoft.com[Windows 8+] for native installation
+* https://www.microsoft.com[Windows 10] for the "`Docker for Windows`" installation
 
 Older versions may work but are not tested.
 
 
-== Install
+== Quick install
+
+=== Open PowerShell with Administrator rights
+
+Right-click on the "`Start`" menu, and click on "`Windows PowerShell (Admin)`".
+
+image::images/windows-powershell-start.png[]
+
+You will be presented with the following alert, click "`Yes`" to start the shell.
+
+image::images/windows-powershell-enable.png[]
 
 
 === Native installation
 
-Run this command in your `cmd.exe` or `PowerShell`:
+Run the commands as specified:
+
+If you'd like to run via `cmd.exe` (run with Administrator privileges):
 
 [source,sh]
 ----
 bitsadmin /transfer get https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
 ----
 
+If you'd like to run via PowerShell (again, run with Administrator privileges):
 
+----
+(Invoke-WebRequest 'https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.bat' -OutFile 'install.bat'); .\install.bat
+----
 
 === Docker installation
 
+Run the commands as specified:
+
+If you'd like to run via `cmd.exe` (run with Administrator privileges):
+
+[source,sh]
+----
+bitsadmin /transfer get https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/docker.bat %cd%\docker.bat & .\docker.bat
+----
+
+If you'd like to run via PowerShell (again, run with Administrator privileges):
+
+----
+(Invoke-WebRequest 'https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/docker.bat' -OutFile 'docker.bat'); .\docker.bat
+----
+
+
+
+== Manual Install
+
 If automatic installation doesn't work for you for some reason, follow steps bellow.
 
+=== Docker install
 
 ==== General
 
@@ -58,25 +95,13 @@ There are two ways to install prerequisite packages on Windows:
 * Via manual downloads and installs
 
 
-==== (Recommended) Install "`Chocolatey`"
+==== Install "`Chocolatey`"
 
 You can install Chocolatey with `cmd.exe` or PowerShell.
 
 Let's take the PowerShell method as an example.
 
 NOTE: Refer to detailed steps here: https://chocolatey.org/install
-
-
-===== Open PowerShell with Administrator rights
-
-Right-click on the "`Start`" menu, and click on "`Windows PowerShell (Admin)`".
-
-image::images/windows-powershell-start.png[]
-
-You will be presented with the following alert, click "`Yes`" to start the shell.
-
-image::images/windows-powershell-enable.png[]
-
 
 
 ===== Run Chocolatey install script in PowerShell
