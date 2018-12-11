@@ -5,7 +5,7 @@ SET INSTALL_LOG_FILE=metanorma_install.log
 ECHO Installation metanorma (local) started %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
 
 bitsadmin /transfer get ^
-	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/packages.config ^
+	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.config ^
 	%CD%\install.config >> %INSTALL_LOG_FILE% 2>&1
 
 WHERE choco >> %INSTALL_LOG_FILE% 2>&1
@@ -17,7 +17,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 ECHO Installing choco packages...
-cinst packages.config -y >> %INSTALL_LOG_FILE% 2>&1
+cinst install.config -y >> %INSTALL_LOG_FILE% 2>&1
 CALL refreshenv >> %INSTALL_LOG_FILE% 2>&1
 
 ECHO Installing puppeteer...
