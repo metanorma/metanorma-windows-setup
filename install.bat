@@ -4,8 +4,10 @@ SET INSTALL_LOG_FILE=metanorma_install.log
 
 ECHO Installation metanorma (local) started %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
 
+IF "%APPVEYOR_REPO_COMMIT%"=="" SET APPVEYOR_REPO_COMMIT=master
+
 bitsadmin /transfer get ^
-	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.config ^
+	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/%APPVEYOR_REPO_COMMIT%/install.config ^
 	%CD%\install.config >> %INSTALL_LOG_FILE% 2>&1
 
 WHERE choco >> %INSTALL_LOG_FILE% 2>&1
@@ -38,7 +40,7 @@ SET XSLT_INCLUDE=%ChocolateyInstall%\lib\xsltproc\dist\include
 SET XSLT_LIB_DIR=%ChocolateyInstall%\lib\xsltproc\dist\lib
 SET RUBY_BIN=c:\tools\ruby25\bin
 
-CALL %RUBY_BIN%\gem install bundler
+CALL %RUBY_BIN%\gem install bundler >> %INSTALL_LOG_FILE% 2>&1
 CALL %RUBY_BIN%\gem install metanorma-cli -- ^
 	--with-xml2-include=%XSLT_INCLUDE%\libxml2 ^
 	--with-xslt-include=%XSLT_INCLUDE% ^
