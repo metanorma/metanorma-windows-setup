@@ -6,14 +6,18 @@ image: Visual Studio 2017
 build: off
 
 test_script:
-  - appveyor AddMessage -Category Information "Test install script"
+  - appveyor AddMessage -Category Information "Test install script (ruby local)"
   - bitsadmin /transfer get https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
-  - echo Install script returned %ERRORLEVEL%
+  - echo "Script returned %ERRORLEVEL%"
+  - appveyor AddMessage -Category Information "Test install script (ruby local) finished"
+  - appveyor AddMessage -Category Information "Test documentation generation for unece-cefact-recommendation-42"
   - refreshenv
   - git clone https://github.com/riboseinc/unece-cefact-recommendation-42.git & cd unece-cefact-recommendation-42
-  - make -f Makefile.win clean all
-  - echo Generation script script returned %ERRORLEVEL%
-  - echo Test DONE
+  - call make -f Makefile.win clean all
+  - echo "Script returned %ERRORLEVEL%"
+  - echo "Test install script (docker)"
+  - ps: (Invoke-WebRequest 'https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/powershell/docker.bat' -OutFile 'docker.bat'); .\docker.bat
+  - echo "Script returned %ERRORLEVEL%"
 
 after_test:
   - 7z a %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42.zip %APPVEYOR_BUILD_FOLDER%\unece-cefact-recommendation-42\unece-cefact-recommendation-42.*

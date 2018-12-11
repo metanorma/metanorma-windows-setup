@@ -2,11 +2,11 @@
 
 SET INSTALL_LOG_FILE=metanorma_install.log
 
-ECHO Installation start %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
+ECHO Installation metanorma (local) started %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
 
 bitsadmin /transfer get ^
 	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/packages.config ^
-	%CD%\packages.config >> %INSTALL_LOG_FILE% 2>&1
+	%CD%\install.config >> %INSTALL_LOG_FILE% 2>&1
 
 WHERE choco >> %INSTALL_LOG_FILE% 2>&1
 IF %ERRORLEVEL% NEQ 0 (
@@ -29,41 +29,17 @@ IF %ERRORLEVEL% NEQ 0 (
 	cinst javaruntime -y >> %INSTALL_LOG_FILE% 2>&1
 )
 
-WHERE docker >> %INSTALL_LOG_FILE% 2>&1
-IF %ERRORLEVEL% NEQ 0 (
-	ECHO Installing Docker For Windows...
-	cinst docker-for-windows -y >> %INSTALL_LOG_FILE% 2>&1
-
-	:: docker-for-windows availavle only on Enterprise & Pro version so fallback if it doesn't work
-	IF %ERRORLEVEL% NEQ 0 (
-		ECHO "Installing Docker For Windows failed. Fallback to docker & docker-machine..."
-		cinst docker -y >> %INSTALL_LOG_FILE% 2>&1
-	)
-
-	CALL refreshenv >> %INSTALL_LOG_FILE% 2>&1
-) ELSE (
-	ECHO Docker already installed
-)
-
-WHERE docker-machine >> %INSTALL_LOG_FILE% 2>&1
-IF %ERRORLEVEL% NEQ 0 cinst docker-machine -y >> %INSTALL_LOG_FILE% 2>&1
-
-CALL refreshenv >> %INSTALL_LOG_FILE% 2>&1
-
-ECHO - Please be aknowledged about docker-machine sharing restrictions on windows https://github.com/docker/machine/issues/4424#issuecomment-377727985
-
-docker-machine inspect default >> %INSTALL_LOG_FILE% 2>&1
-IF %ERRORLEVEL% NEQ 0 ECHO - There is no default machine for docker please proceed with creation https://docs.docker.com/machine/reference/create/
-
 ECHO Installing gems...
 
 ECHO @ECHO OFF > %ChocolateyInstall%\bin\xml2-config.bat
 ECHO @ECHO OFF > %ChocolateyInstall%\bin\xslt-config.bat
+
 SET XSLT_INCLUDE=%ChocolateyInstall%\lib\xsltproc\dist\include
 SET XSLT_LIB_DIR=%ChocolateyInstall%\lib\xsltproc\dist\lib
 SET RUBY_BIN=c:\tools\ruby25\bin
 
-CALL %RUBY_BIN%\gem install bundler metanorma-cli -- ^
+CALL %RUBY_BIN%\gem install bundler
+CALL %RUBY_BIN%\gem install metanorma-cli -- ^
 	--with-xml2-include=%XSLT_INCLUDE%\libxml2 ^
 	--with-xslt-include=%XSLT_INCLUDE% ^
 	--with-xml2-lib=%XSLT_LIB_DIR% ^
@@ -81,6 +57,6 @@ WHERE ruby gem bundle java docker >> %INSTALL_LOG_FILE% 2>&1
 
 CALL metanorma --help >> %INSTALL_LOG_FILE% 2>&1
 
-ECHO Installation finished %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
+ECHO Installation metanorma (local) finished %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
 
 ECHO Done!
