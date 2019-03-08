@@ -4,15 +4,15 @@ build: off
 
 install:
   - appveyor AddMessage -Category Information "Install metanotrma"
-  - bitsadmin /transfer get https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/%APPVEYOR_REPO_COMMIT%/install.bat %cd%\install.bat & .\install.bat
+  - bitsadmin /transfer get https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/%APPVEYOR_REPO_COMMIT%/install.bat %cd%\install.bat & .\install.bat
   - echo "Script returned %ERRORLEVEL%"
   - appveyor AddMessage -Category Information "Install docker"
-  - ps: (Invoke-WebRequest "https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/$Env:APPVEYOR_REPO_COMMIT/docker.bat" -OutFile 'docker.bat'); .\docker.bat
+  - ps: (Invoke-WebRequest "https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/$Env:APPVEYOR_REPO_COMMIT/docker.bat" -OutFile 'docker.bat'); .\docker.bat
   - appveyor AddMessage -Category Information "Script returned %ERRORLEVEL%"
   - refreshenv
 
 test_script:
-  - git clone https://github.com/riboseinc/unece-cefact-recommendation-42.git & cd unece-cefact-recommendation-42
+  - git clone https://github.com/metanorma/unece-cefact-recommendation-42.git & cd unece-cefact-recommendation-42
   - set PATH=c:\tools\ruby25\bin;%PATH%
   - gem install bundler -v 1.17.3
   - call make -f Makefile.win clean all

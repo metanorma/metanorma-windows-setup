@@ -1,14 +1,13 @@
 = Metanorma Windows Setup
 
-image:https://ci.appveyor.com/api/projects/status/github/riboseinc/metanorma-windows-setup?branch=master&svg=true["AppVeyor Build", link="https://ci.appveyor.com/project/ribose/metanorma-windows-setup"]
-image:https://codeclimate.com/github/riboseinc/metanorma-windows-setup/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/metanorma-windows-setup"]
+image:https://codeclimate.com/github/metanorma/metanorma-windows-setup/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-windows-setup"]
 image:https://ci.appveyor.com/api/projects/status/vqo2221uwcaov8kx?svg=true["Build Status", link="https://ci.appveyor.com/project/ribose/metanorma-windows-setup"]
 
 
 == Purpose
 
 This repository provides installation of the
-https://github.com/riboseinc/metanorma[Metanorma] publication toolchain
+https://github.com/metanorma/metanorma[Metanorma] publication toolchain
 on Windows.
 
 There are two types of installation:
@@ -46,13 +45,13 @@ If you'd like to run via `cmd.exe` (run with Administrator privileges):
 
 [source,sh]
 ----
-bitsadmin /transfer get https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
+bitsadmin /transfer get https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/master/install.bat %cd%\install.bat & .\install.bat
 ----
 
 If you'd like to run via PowerShell (again, run with Administrator privileges):
 
 ----
-(Invoke-WebRequest 'https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/install.bat' -OutFile 'install.bat'); .\install.bat
+(Invoke-WebRequest 'https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/master/install.bat' -OutFile 'install.bat'); .\install.bat
 ----
 
 === Docker installation
@@ -63,13 +62,13 @@ If you'd like to run via `cmd.exe` (run with Administrator privileges):
 
 [source,sh]
 ----
-bitsadmin /transfer get https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/docker.bat %cd%\docker.bat & .\docker.bat
+bitsadmin /transfer get https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/master/docker.bat %cd%\docker.bat & .\docker.bat
 ----
 
 If you'd like to run via PowerShell (again, run with Administrator privileges):
 
 ----
-(Invoke-WebRequest 'https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/docker.bat' -OutFile 'docker.bat'); .\docker.bat
+(Invoke-WebRequest 'https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/master/docker.bat' -OutFile 'docker.bat'); .\docker.bat
 ----
 
 
@@ -263,7 +262,7 @@ image::images/vmware-enable-vtx.png[]
 
 [source,sh]
 ----
-git clone https://github.com/riboseinc/isodoc-rice
+git clone https://github.com/metanorma/isodoc-rice
 cd isodoc-rice
 ----
 
@@ -301,7 +300,7 @@ Invoke-Item iso-rice-en.html
 
 [source,sh]
 ----
-git clone https://github.com/riboseinc/unece-cefact-recommendation-42
+git clone https://github.com/metanorma/unece-cefact-recommendation-42
 cd unece-cefact-recommendation-42
 ----
 
@@ -337,6 +336,6 @@ Invoke-Item unece-cefact-recommendation-42.html
 == Debugging
 
 If you run into any problems, please copy and paste the entire log into a
-https://github.com/riboseinc/metanorma-windows-setup/issues/new[new GitHub Issue]
+https://github.com/metanorma/metanorma-windows-setup/issues/new[new GitHub Issue]
 for us.
 

@@ -4,8 +4,10 @@ SET INSTALL_LOG_FILE=metanorma_install.log
 
 ECHO Installation metanorma (docker) started %DATE% %TIME% >> %INSTALL_LOG_FILE% 2>&1
 
+IF "%APPVEYOR_REPO_COMMIT%"=="" SET APPVEYOR_REPO_COMMIT=master
+
 bitsadmin /transfer get ^
-	https://raw.githubusercontent.com/riboseinc/metanorma-windows-setup/master/docker.config ^
+	https://raw.githubusercontent.com/metanorma/metanorma-windows-setup/%APPVEYOR_REPO_COMMIT%/docker.config ^
 	%CD%\docker.config >> %INSTALL_LOG_FILE% 2>&1
 
 WHERE choco >> %INSTALL_LOG_FILE% 2>&1
