@@ -4,6 +4,11 @@ image:https://codeclimate.com/github/metanorma/metanorma-windows-setup/badges/gp
 image:https://ci.appveyor.com/api/projects/status/vqo2221uwcaov8kx?svg=true["Build Status", link="https://ci.appveyor.com/project/ribose/metanorma-windows-setup"]
 
 
+NOTE: Installation instructions in this repository are no longer maintained or recommended.
+Please refer to https://www.metanorma.com/author/topics/install/[Metanorma installation docs]
+(which also cover Windows) instead.
+
+
 == Purpose
 
 This repository provides installation of the
